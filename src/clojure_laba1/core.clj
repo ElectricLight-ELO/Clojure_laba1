@@ -19,7 +19,7 @@
     (str  name)
 )
 ; --------------------
-(def users   ; глобальная переменная под имена
+(def users   ; глобальная переменная под имена (DICTIONARY)
   [ {:name "Иван"   :age 20}
    {:name "Мария"  :age 25}
    {:name "Петр"   :age 20}
@@ -33,18 +33,36 @@
 (defn group_by_age [users]
   (group-by :age users))
 
+(defn count_by_group [users]
+  (let [grouped (group-by :age users)]
+    ( into {} (map (fn [[age group]]
+                    
+                    )
+                  grouped)
+    )
+  ) 
+)
 (defn -main
   "laboratorka var5"
   [& args]
     (println "--- Группировка по возрасту---")
   
-  (let 
-      [grouped (group_by_age users)]
-        (doseq [[_age group] grouped]
-          (println "Age"_age "-" (map :name group)) ; группировка
-        )
-  )
+      (let 
+          [grouped (group_by_age users)]
+            (doseq [[_age group] grouped]
+              (println "Age"_age "-" (map :name group)) ; группировка
+            )
+      )
 
+    (println "---- подсчет кол-ва в каждой группе ----")
+
+    (let 
+      [counts (count_by_group users)]
+        (doseq [[age cnt] counts] ; cnt - кол-во людей
+          (println "tests" cnt "чел")
+        )
+    
+    )
  ; (println "test Laba1")
  ; (println (test "Student"))
  ; (println(greet "tttest"))
