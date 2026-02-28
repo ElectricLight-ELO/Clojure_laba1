@@ -40,8 +40,8 @@
   
   (let 
       [grouped (group_by_age users)]
-        (doseq [[age_ group] grouped]
-          (println (map :name group)) ; группировка
+        (doseq [[_age group] grouped]
+          (println "Age"_age "-" (map :name group)) ; группировка
         )
   )
 
