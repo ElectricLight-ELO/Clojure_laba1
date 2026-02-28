@@ -31,7 +31,7 @@
    ]  )
 
 (defn group_by_age [users]
-  (group-by :age users)
+  (group-by :age users))
 
 (defn -main
   "laboratorka var5"
@@ -40,10 +40,10 @@
   
   (let 
       [grouped (group_by_age users)]
-        (doseq [[group] grouped]
+        (doseq [[age_ group] grouped]
           (println (map :name group)) ; группировка
         )
-      )
+  )
 
  ; (println "test Laba1")
  ; (println (test "Student"))
