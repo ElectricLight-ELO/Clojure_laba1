@@ -35,10 +35,10 @@
 
 (defn count_by_group [users]
   (let [grouped (group-by :age users)]
-    ( into {} (map (fn [[age group]]
-                    
-                    )
-                  grouped)
+    ( into {} (
+      map (fn [[age group]]   [age (count group)]
+                )
+              grouped  )
     )
   ) 
 )
@@ -56,13 +56,11 @@
 
     (println "---- подсчет кол-ва в каждой группе ----")
 
-    (let 
-      [counts (count_by_group users)]
-        (doseq [[age cnt] counts] ; cnt - кол-во людей
-          (println "tests" cnt "чел")
+    (let [counts (count_by_group users)]
+        (doseq [[age cnt] counts]
+          (println "Возраст:" age "-" cnt "чел.")
         )
-    
-    )
+      )
  ; (println "test Laba1")
  ; (println (test "Student"))
  ; (println(greet "tttest"))
