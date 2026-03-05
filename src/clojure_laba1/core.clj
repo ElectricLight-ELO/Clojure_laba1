@@ -18,7 +18,15 @@
     
     (str  name)
 )
-; --------------------
+
+(defn check_text_password [input]
+  (if (= input "passwdQWERTY")
+    true
+    false))
+
+
+
+; --------------------Лабораторная 1 вар 5--------------------
 (def users   ; глобальная переменная под имена (DICTIONARY)
   [ {:name "Иван"   :age 20}
    {:name "Мария"  :age 25}
@@ -31,14 +39,13 @@
    ]  )
 
 (defn group_by_age [users]
-  (group-by :age users))
+  (group-by :age users)) ; группируем по второму параметру возраст
 
 (defn count_by_group [users]
-  (let [grouped (group-by :age users)]
+  (let [grouped (group-by :age users)] ; опять группируем
     ( into {} (
-      map (fn [[age group]]   [age (count group)]
-                )
-              grouped  )
+      map ( fn [[age group]]   [age (count group)] )
+       grouped  ) ; соединяем кол-во возрастов и сколько человек
     )
   ) 
 )
@@ -48,7 +55,7 @@
     (println "--- Группировка по возрасту---")
   
       (let 
-          [grouped (group_by_age users)]
+          [grouped (group_by_age users)] ; 
             (doseq [[_age group] grouped]
               (println "Age"_age "-" (map :name group)) ; группировка
             )
@@ -64,4 +71,6 @@
  ; (println "test Laba1")
  ; (println (test "Student"))
  ; (println(greet "tttest"))
+
+ ; (println(check_text_password "passwdQWERTY"))
   )
